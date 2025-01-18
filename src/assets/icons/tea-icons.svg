@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Чашка чая -->
+  <symbol id="tea-cup" viewBox="0 0 24 24">
+    <path d="M2 19h18v2H2v-2zm2-8v3c0 3.31 2.69 6 6 6h6c3.31 0 6-2.69 6-6v-3h-2v3c0 2.21-1.79 4-4 4H10c-2.21 0-4-1.79-4-4v-3H4zm14-8V2H8v1c0 .55.45 1 1 1h6c.55 0 1-.45 1-1zM8 7h8c1.1 0 2-.9 2-2V4H6v1c0 1.1.9 2 2 2z"/>
+  </symbol>
+
+  <!-- Лист чая -->
+  <symbol id="tea-leaf" viewBox="0 0 24 24">
+    <path d="M12 2C7.03 2 3 6.03 3 11v9h6v-9c0-1.66 1.34-3 3-3s3 1.34 3 3v9h6v-9c0-4.97-4.03-9-9-9z"/>
+  </symbol>
+
+  <!-- Преимущества -->
+  <symbol id="benefits" viewBox="0 0 24 24">
+    <path d="M12 2L1 9l3 2.25V19l8 3 8-3v-7.75L23 9 12 2zm0 15-5-2v-3l5 2v3zm5-2-5 2v-3l5-2v3z"/>
+  </symbol>
+
+  <!-- Статистика -->
+  <symbol id="stats" viewBox="0 0 24 24">
+    <path d="M3 13h2v7H3v-7zm4-7h2v14H7V6zm4 3h2v11h-2V9zm4-3h2v14h-2V6zm4 6h2v8h-2v-8z"/>
+  </symbol>
+
+  <!-- Локация -->
+  <symbol id="location" viewBox="0 0 24 24">
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+  </symbol>
+
+  <!-- Франшиза -->
+  <symbol id="franchise" viewBox="0 0 24 24">
+    <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+  </symbol>
+
+  <!-- Поддержка -->
+  <symbol id="support" viewBox="0 0 24 24">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm1-10c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+  </symbol>
+</svg>
