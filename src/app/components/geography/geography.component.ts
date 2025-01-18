@@ -7,6 +7,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   standalone: true,
   imports: [CommonModule],
   template: `
+    <h1>GEOGRAPHY-COMPONENT</h1>
     <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-16">
@@ -19,7 +20,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
           <div class="lg:w-2/3" [@fadeIn]>
             <div class="relative">
               <img
-                src="assets/world-map.svg"
+                src="assets/images/world-map.svg"
                 alt="Карта присутствия TEADAY"
                 class="w-full"
               >

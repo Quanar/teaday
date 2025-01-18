@@ -7,6 +7,7 @@ import { trigger, transition, style, animate, stagger, query } from '@angular/an
   standalone: true,
   imports: [CommonModule],
   template: `
+    <h1>CONCEPT-COMPONENT</h1>
     <section id="concept" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">КОНЦЕПЦИЯ</h2>
@@ -24,7 +25,7 @@ import { trigger, transition, style, animate, stagger, query } from '@angular/an
         <div class="relative max-w-4xl mx-auto">
           <!-- Центральный логотип -->
           <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <img src="assets/logo-symbol.svg" alt="TEADAY" class="w-24">
+            <img src="assets/images/teaday.png" alt="TEADAY" class="w-24">
           </div>
 
           <!-- Преимущества по кругу -->

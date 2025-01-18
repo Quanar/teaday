@@ -7,6 +7,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
   standalone: true,
   imports: [CommonModule],
   template: `
+    <h1>FORMATS-COMPONENT</h1>
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">
@@ -86,7 +87,7 @@ export class FormatsComponent {
         { label: 'Инвестиции', value: 'от 25 млн. тг.' },
         { label: 'Сроки открытия', value: 'от 2 мес' }
       ],
-      image: 'assets/format-cafe.jpg'
+      image: 'assets/images/format-cafe.svg'
     },
     {
       id: 'island',
@@ -97,7 +98,7 @@ export class FormatsComponent {
         { label: 'Инвестиции', value: 'от 18 млн. тг.' },
         { label: 'Сроки открытия', value: 'от 1.5 мес' }
       ],
-      image: 'assets/format-island.jpg'
+      image: 'assets/images/format-island.svg'
     },
     {
       id: 'kiosk',
@@ -108,7 +109,7 @@ export class FormatsComponent {
         { label: 'Инвестиции', value: 'от 15 млн. тг.' },
         { label: 'Сроки открытия', value: 'от 1 мес' }
       ],
-      image: 'assets/format-kiosk.jpg'
+      image: 'assets/images/format-kiosk.svg'
     }
   ]);
 

@@ -1,0 +1,32 @@
+<svg width="400" height="600" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Чашка -->
+  <path d="M100 150 L300 150 L270 550 L130 550 Z" fill="#ffffff" stroke="#000000" stroke-width="8"/>
+
+  <!-- Напиток -->
+  <path d="M110 180 L290 180 L265 520 L135 520 Z" fill="#FF6B6B" opacity="0.8"/>
+
+  <!-- Фрукты -->
+  <g>
+    <!-- Апельсин -->
+    <circle cx="180" cy="250" r="20" fill="#FFA500"/>
+    <path d="M170 240 L190 260 M160 250 L200 250 M180 240 L180 260"
+          stroke="#FF8C00" stroke-width="2" fill="none"/>
+
+    <!-- Лимон -->
+    <circle cx="220" cy="300" r="20" fill="#FFD700"/>
+    <path d="M210 290 L230 310 M200 300 L240 300 M220 290 L220 310"
+          stroke="#DAA520" stroke-width="2" fill="none"/>
+
+    <!-- Клубника -->
+    <path d="M150 350 Q170 320 190 350 Q150 380 150 350" fill="#FF0000"/>
+    <circle cx="155" cy="335" r="2" fill="#FFFF00"/>
+    <circle cx="165" cy="340" r="2" fill="#FFFF00"/>
+    <circle cx="175" cy="335" r="2" fill="#FFFF00"/>
+  </g>
+
+  <!-- Крышка -->
+  <path d="M90 150 L310 150 L320 100 L80 100 Z" fill="#ffffff" stroke="#000000" stroke-width="8"/>
+
+  <!-- Трубочка -->
+  <path d="M200 90 L200 20 L220 20 L220 90" fill="#90EE90"/>
+</svg>
