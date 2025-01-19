@@ -7,7 +7,6 @@ import { trigger, transition, style, animate, stagger, query } from '@angular/an
   standalone: true,
   imports: [CommonModule],
   template: `
-    <h1>CONCEPT-COMPONENT</h1>
     <section id="concept" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">КОНЦЕПЦИЯ</h2>

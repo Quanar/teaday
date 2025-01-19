@@ -8,13 +8,17 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   imports: [CommonModule],
   template: `
     <header class="fixed w-full z-50 transition-all duration-300"
-            [class.scrolled]="isScrolled()">
+            [class.scrolled]="isScrolled()"
+            [class.lg:bg-white]="isScrolled()">
       <div class="container mx-auto px-4">
         <nav class="flex items-center justify-between h-20">
-          <!-- Логотип -->
-          <div class="logo">
+          <!-- Логотип (скрыт на мобильных) -->
+          <div class="logo hidden lg:block">
             <img src="/assets/images/teaday.png" alt="TEADAY" class="h-8">
           </div>
+
+          <!-- Пустой div для сохранения flex-структуры на мобильных -->
+          <div class="lg:hidden"></div>
 
           <!-- Основное меню -->
           <div class="hidden lg:flex items-center space-x-8">
@@ -31,7 +35,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           </button>
 
           <!-- Мобильное меню -->
-          <button class="lg:hidden" (click)="toggleMenu()">
+          <button class="lg:hidden p-2 rounded-full bg-white shadow-md" (click)="toggleMenu()">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                     [attr.d]="isMenuOpen() ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"/>
@@ -39,19 +43,32 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           </button>
         </nav>
 
+        <!-- Затемненный фон -->
+        <div *ngIf="isMenuOpen()"
+             class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+             (click)="toggleMenu()">
+        </div>
+
         <!-- Мобильное выпадающее меню -->
-        <div class="lg:hidden"
+        <div class="lg:hidden fixed right-0 top-0 w-1/2 bg-gradient-to-b from-slate-900 to-blue-900 h-screen shadow-xl"
              [class.hidden]="!isMenuOpen()"
              [@slideDown]="isMenuOpen() ? 'open' : 'closed'">
-          <div class="py-2">
+          <!-- Мобильный логотип -->
+          <div class="p-6 border-b border-blue-700/30">
+            <img src="/assets/images/teaday.png" alt="TEADAY" class="h-8">
+          </div>
+          <div class="py-4">
             <a *ngFor="let item of menuItems()"
                [href]="item.href"
-               class="block py-2 px-4 text-gray-800 hover:bg-gray-100">
+               (click)="navigateToSection(item.href)"
+               class="block py-3 px-6 text-blue-100 hover:bg-blue-800/30 hover:text-white transition-all duration-200">
               {{item.title}}
             </a>
-            <button class="w-full text-left px-4 py-2 text-coral font-semibold">
-              СВЯЗАТЬСЯ С НАМИ
-            </button>
+            <div class="px-6 pt-6">
+              <button class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-500 transition-colors font-semibold">
+                СВЯЗАТЬСЯ С НАМИ
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -63,7 +80,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     }
 
     .scrolled {
-      @apply bg-white shadow-md;
+      @apply lg:shadow-md;
     }
 
     .logo img {
@@ -77,11 +94,11 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('slideDown', [
       state('closed', style({
-        height: '0',
+        transform: 'translateX(100%)',
         opacity: '0'
       })),
       state('open', style({
-        height: '*',
+        transform: 'translateX(0)',
         opacity: '1'
       })),
       transition('closed <=> open', animate('300ms ease-in-out'))
@@ -107,5 +124,23 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.isMenuOpen.update(value => !value);
+  }
+
+  navigateToSection(href: string) {
+    this.toggleMenu();
+
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300);
   }
 }
