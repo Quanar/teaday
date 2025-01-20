@@ -13,7 +13,7 @@ import { trigger, transition, style, animate, stagger, query } from '@angular/an
 
         <div class="text-center max-w-3xl mx-auto mb-16" [@fadeIn]>
           <p class="text-lg">
-            TEADAY — это больше, чем просто место, где можно купить напиток.
+            <span class="text-coral">TEADAY</span> — это больше, чем просто место, где можно купить напиток.
             Это уникальная атмосфера, объединяющая современный стиль, яркие вкусы
             и инновационные подходы к традиционным напиткам. Мы стремимся создавать
             пространство, где каждый гость чувствует себя частью чего-то особенного.
@@ -30,8 +30,8 @@ import { trigger, transition, style, animate, stagger, query } from '@angular/an
           <!-- Преимущества по кругу -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" [@staggerFade]>
             <div *ngFor="let item of conceptItems()" class="concept-item">
-              <h3 class="font-bold text-xl mb-3">{{item.title}}</h3>
-              <p>{{item.description}}</p>
+              <h3 class="font-bold text-xl mb-3">{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
             </div>
           </div>
         </div>
