@@ -36,6 +36,8 @@ module.exports = {
       boxShadow: {
         'soft': '0 2px 15px rgba(0, 0, 0, 0.05)',
         'medium': '0 4px 20px rgba(0, 0, 0, 0.1)',
+        'hover': '0 10px 40px rgba(0, 0, 0, 0.1)',
+        'glow': '0 0 20px rgba(var(--color-coral-rgb), 0.3)',
       },
       zIndex: {
         '-1': '-1',
@@ -43,6 +45,10 @@ module.exports = {
       animation: {
         'float': 'float 3s ease-in-out infinite',
         'pulse': 'pulse 2s ease-in-out infinite',
+        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'ping-slower': 'ping 4s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'glow': 'glow 2s ease-in-out infinite',
+        'scale': 'scale 300ms ease-out',
       },
       keyframes: {
         float: {
@@ -53,6 +59,33 @@ module.exports = {
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
           '50%': { transform: 'scale(1.1)', opacity: '0.8' },
         },
+        ping: {
+          '75%, 100%': {
+            transform: 'scale(2)',
+            opacity: '0',
+          },
+        },
+        glow: {
+          '0%, 100%': {
+            boxShadow: '0 0 20px rgba(var(--color-coral-rgb), 0.3)',
+          },
+          '50%': {
+            boxShadow: '0 0 30px rgba(var(--color-coral-rgb), 0.6)',
+          },
+        },
+        scale: {
+          '0%': { transform: 'scale(0.95)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      transitionDuration: {
+        '400': '400ms',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },
