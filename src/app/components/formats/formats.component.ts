@@ -7,7 +7,6 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
   standalone: true,
   imports: [CommonModule],
   template: `
-    <h1>FORMATS-COMPONENT</h1>
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">

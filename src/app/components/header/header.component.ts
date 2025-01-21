@@ -1,11 +1,12 @@
 import { Component, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import {ModalComponent} from "../modal/modal.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ModalComponent, ModalComponent],
   template: `
     <header class="fixed w-full z-50 transition-all duration-300"
             [class.scrolled]="isScrolled()"
@@ -30,7 +31,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           </div>
 
           <!-- Кнопка связаться -->
-          <button class="hidden lg:block bg-coral text-white px-6 py-2 rounded hover:bg-coral-dark transition-colors">
+          <button
+            class="hidden lg:block bg-coral text-white px-6 py-2 rounded hover:bg-coral-dark transition-colors"
+            (click)="showModal()">
             СВЯЗАТЬСЯ С НАМИ
           </button>
 
@@ -65,7 +68,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
               {{item.title}}
             </a>
             <div class="px-6 pt-6">
-              <button class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-500 transition-colors font-semibold">
+              <button
+                class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-500 transition-colors font-semibold"
+                (click)="showModal()">
                 СВЯЗАТЬСЯ С НАМИ
               </button>
             </div>
@@ -73,6 +78,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         </div>
       </div>
     </header>
+
+    <!-- Модальное окно -->
+    <app-modal
+      *ngIf="isModalOpen()"
+      (close)="closeModal()">
+    </app-modal>
   `,
   styles: [`
     :host {
@@ -108,6 +119,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class HeaderComponent {
   isScrolled = signal(false);
   isMenuOpen = signal(false);
+  isModalOpen = signal(false);
 
   menuItems = signal([
     { title: 'КОНЦЕПЦИЯ', href: '#concept' },
@@ -124,6 +136,15 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.isMenuOpen.update(value => !value);
+  }
+
+  showModal() {
+    this.isModalOpen.set(true);
+    this.isMenuOpen.set(false); // Закрываем мобильное меню при открытии модалки
+  }
+
+  closeModal() {
+    this.isModalOpen.set(false);
   }
 
   navigateToSection(href: string) {
