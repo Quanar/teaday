@@ -7,7 +7,7 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section class="py-20 bg-white">
+    <section id="partnership" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">
           ПАРТНЕРСТВО С <span class="text-coral">TEADAY</span> ЭТО
