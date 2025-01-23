@@ -11,6 +11,7 @@ import {GeographyMapComponent} from './components/geography/geography.component'
 import {FormatsComponent} from './components/formats/formats.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {FooterComponent} from './components/footer/footer.component';
+import {SocialIconsComponent} from "./components/social-icons/social-icons.component";
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ import {FooterComponent} from './components/footer/footer.component';
     FormatsComponent,
     ContactComponent,
     FooterComponent,
-    GeographyMapComponent
+    GeographyMapComponent,
+    SocialIconsComponent
   ],
   template: `
     <app-header/>
@@ -41,6 +43,7 @@ import {FooterComponent} from './components/footer/footer.component';
       <app-formats/>
       <app-contact/>
     </main>
+    <app-social-icons />
     <app-footer/>
   `
 })
