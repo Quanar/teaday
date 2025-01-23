@@ -46,12 +46,21 @@ import { FormsModule } from '@angular/forms';
             />
           </div>
 
-          <div>
+          <div class="flex gap-2">
+            <select
+              [(ngModel)]="selectedCountry"
+              name="country"
+              class="w-1/3 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              (change)="updatePhonePrefix()">
+              <option *ngFor="let country of countries" [value]="country.code">
+                {{ country.flag }} {{ country.prefix }}
+              </option>
+            </select>
             <input
               type="tel"
               [(ngModel)]="formData.phone"
               name="phone"
-              placeholder="+7 (999) 999-99-99"
+              placeholder="999 999-99-99"
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
@@ -110,9 +119,39 @@ export class ModalComponent {
     time: ''
   };
 
+  // По умолчанию выбран Казахстан
+  selectedCountry = '+7'; // Код Казахстана
+  countries = [
+    { code: '+7', flag: '🇰🇿', prefix: '+7' }, // Казахстан
+    { code: '+7', flag: '🇷🇺', prefix: '+7' }, // Россия
+    { code: '+1', flag: '🇺🇸', prefix: '+1' }, // США
+    { code: '+44', flag: '🇬🇧', prefix: '+44' }, // Великобритания
+    { code: '+49', flag: '🇩🇪', prefix: '+49' }, // Германия
+    { code: '+33', flag: '🇫🇷', prefix: '+33' }, // Франция
+    { code: '+81', flag: '🇯🇵', prefix: '+81' }, // Япония
+    { code: '+86', flag: '🇨🇳', prefix: '+86' }, // Китай
+    { code: '+91', flag: '🇮🇳', prefix: '+91' }, // Индия
+    { code: '+61', flag: '🇦🇺', prefix: '+61' }, // Австралия
+    { code: '+55', flag: '🇧🇷', prefix: '+55' }, // Бразилия
+    // Добавьте другие страны по необходимости
+  ];
+
+  ngOnInit() {
+    // Устанавливаем префикс телефона по умолчанию для Казахстана
+    this.updatePhonePrefix();
+  }
+
+  updatePhonePrefix() {
+    const selectedCountry = this.countries.find(country => country.code === this.selectedCountry);
+    if (selectedCountry) {
+      this.formData.phone = selectedCountry.prefix + ' ' + this.formData.phone.replace(/^\+\d+\s/, '');
+    }
+  }
+
   onSubmit() {
     console.log('Form submitted:', this.formData);
     //TODO Здесь будет логика отправки формы
     this.close.emit();
   }
 }
+

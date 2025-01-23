@@ -1,31 +1,32 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'app-business-model',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section class="py-20 bg-coral-light">
+    <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-16">БИЗНЕС МОДЕЛЬ</h2>
+        <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 ">
+          БИЗНЕС МОДЕЛЬ
+        </h2>
 
-        <div class="grid gap-6" [@staggerItems]>
-          <div *ngFor="let item of businessItems()"
-               class="business-item grid grid-cols-1 md:grid-cols-2 items-center">
-            <div class="text-3xl md:text-4xl font-bold text-white md:text-right md:pr-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let item of businessItems(); let i = index"
+               class="business-item p-6 rounded-xl shadow-lg border border-gray-100 transition-all transform hover:scale-105 animate-float">
+            <div style="color: var(--color-coral-dark)" class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
               {{item.value}}
             </div>
-            <div class="text-lg md:text-xl text-white md:border-l md:pl-8">
+            <div class="text-lg md:text-xl text-gray-600">
               {{item.label}}
             </div>
           </div>
         </div>
 
         <div class="mt-16 text-center">
-          <button class="bg-black text-white px-8 py-3 rounded-lg text-lg
-                         hover:bg-opacity-90 transition-all">
+          <button class="bg-coral text-white px-8 py-4 rounded-lg text-xl
+                         hover:bg-coral-dark transition-all transform hover:scale-105 animate-pulse">
             Получить бизнес-план
           </button>
         </div>
@@ -34,26 +35,46 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
   `,
   styles: [`
     .business-item {
-      @apply bg-coral p-6 rounded-lg transition-transform;
+      @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition-all transform;
+      min-height: 150px; /* Уменьшаем высоту */
+    }
 
-      &:hover {
-        transform: translateX(10px);
+    .business-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-color: #ff6633; /* Цвет границы при наведении */
+    }
+
+    /* Анимация пульсации */
+    .animate-pulse {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Анимация плавающего эффекта */
+    .animate-float {
+      animation: float 4s infinite ease-in-out;
+    }
+
+    /* Ключевые кадры для пульсации */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
       }
     }
-  `],
-  animations: [
-    trigger('staggerItems', [
-      transition(':enter', [
-        query('.business-item', [
-          style({ opacity: 0, transform: 'translateX(-20px)' }),
-          stagger('100ms', [
-            animate('600ms ease-out',
-              style({ opacity: 1, transform: 'translateX(0)' }))
-          ])
-        ])
-      ])
-    ])
-  ]
+
+    /* Ключевые кадры для плавающего эффекта */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  `]
 })
 export class BusinessModelComponent {
   businessItems = signal([
