@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 
 @Component({
-  selector: 'app-formats',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-formats',
+    imports: [CommonModule],
+    template: `
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">
@@ -51,7 +50,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .tab-btn {
       @apply border-b-2 border-transparent transition-all;
 
@@ -64,14 +63,14 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
       min-height: 400px;
     }
   `],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0, transform: 'translateY(20px)' })),
-      state('*', style({ opacity: 1, transform: 'translateY(0)' })),
-      transition('void => *', animate('400ms ease-out')),
-      transition('* => void', animate('400ms ease-in'))
-    ])
-  ]
+    animations: [
+        trigger('fadeInOut', [
+            state('void', style({ opacity: 0, transform: 'translateY(20px)' })),
+            state('*', style({ opacity: 1, transform: 'translateY(0)' })),
+            transition('void => *', animate('400ms ease-out')),
+            transition('* => void', animate('400ms ease-in'))
+        ])
+    ]
 })
 export class FormatsComponent {
   selectedFormat = signal('kiosk');

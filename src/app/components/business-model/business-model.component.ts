@@ -2,10 +2,9 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-business-model',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-business-model',
+    imports: [CommonModule],
+    template: `
     <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 ">
@@ -33,7 +32,7 @@ import { CommonModule } from '@angular/common';
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .business-item {
       @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition-all transform;
       min-height: 150px; /* Уменьшаем высоту */

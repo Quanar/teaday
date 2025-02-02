@@ -4,10 +4,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import {ModalComponent} from "../modal/modal.component";
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, ModalComponent, ModalComponent],
-  template: `
+    selector: 'app-header',
+    imports: [CommonModule, ModalComponent, ModalComponent],
+    template: `
     <header class="fixed w-full z-50 transition-all duration-300"
             [class.scrolled]="isScrolled()"
             [class.lg:bg-white]="isScrolled()">
@@ -85,7 +84,7 @@ import {ModalComponent} from "../modal/modal.component";
       (close)="closeModal()">
     </app-modal>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: block;
     }
@@ -102,19 +101,19 @@ import {ModalComponent} from "../modal/modal.component";
       height: 1.75rem;
     }
   `],
-  animations: [
-    trigger('slideDown', [
-      state('closed', style({
-        transform: 'translateX(100%)',
-        opacity: '0'
-      })),
-      state('open', style({
-        transform: 'translateX(0)',
-        opacity: '1'
-      })),
-      transition('closed <=> open', animate('300ms ease-in-out'))
-    ])
-  ]
+    animations: [
+        trigger('slideDown', [
+            state('closed', style({
+                transform: 'translateX(100%)',
+                opacity: '0'
+            })),
+            state('open', style({
+                transform: 'translateX(0)',
+                opacity: '1'
+            })),
+            transition('closed <=> open', animate('300ms ease-in-out'))
+        ])
+    ]
 })
 export class HeaderComponent {
   isScrolled = signal(false);

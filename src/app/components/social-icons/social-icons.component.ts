@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-social-icons',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-social-icons',
+    imports: [CommonModule],
+    template: `
     <div class="social-icons">
       <div class="icon-container" (click)="toggleIcons()" [class.active]="isOpen">
         <i class="fas fa-share-alt"></i> <!-- Иконка для открытия/закрытия -->
@@ -24,7 +23,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     :host {
       position: fixed;
       bottom: 20px;
@@ -91,21 +90,21 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       background-color: #555;
     }
   `],
-  animations: [
-    trigger('slideInOut', [
-      state('closed', style({
-        opacity: 0,
-        transform: 'translateY(20px)', /* Небольшое смещение для плавности */
-        display: 'none'
-      })),
-      state('open', style({
-        opacity: 1,
-        transform: 'translateY(0)',
-        display: 'flex'
-      })),
-      transition('closed <=> open', animate('300ms ease-in-out'))
-    ])
-  ]
+    animations: [
+        trigger('slideInOut', [
+            state('closed', style({
+                opacity: 0,
+                transform: 'translateY(20px)', /* Небольшое смещение для плавности */
+                display: 'none'
+            })),
+            state('open', style({
+                opacity: 1,
+                transform: 'translateY(0)',
+                display: 'flex'
+            })),
+            transition('closed <=> open', animate('300ms ease-in-out'))
+        ])
+    ]
 })
 export class SocialIconsComponent {
   isOpen = false; // Состояние открытия/закрытия иконок

@@ -6,10 +6,9 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {FadeDirective} from "../../directives/fade.directive";
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FadeDirective],
-  template: `
+    selector: 'app-contact',
+    imports: [CommonModule, ReactiveFormsModule, FadeDirective],
+    template: `
     <section id="contacts"
              class="py-20 bg-gradient-to-b from-coral-light to-white relative overflow-hidden">
       <!-- Декоративный фон -->
@@ -203,7 +202,7 @@ import {FadeDirective} from "../../directives/fade.directive";
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .form-group {
       position: relative;
     }
@@ -225,17 +224,17 @@ import {FadeDirective} from "../../directives/fade.directive";
       animation: float 3s ease-in-out infinite;
     }
   `],
-  animations: [
-    trigger('fadeSlideIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
-      ]),
-      transition(':leave', [
-        animate('200ms ease-in', style({ opacity: 0, transform: 'translateY(20px)' }))
-      ])
-    ])
-  ]
+    animations: [
+        trigger('fadeSlideIn', [
+            transition(':enter', [
+                style({ opacity: 0, transform: 'translateY(20px)' }),
+                animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+            ]),
+            transition(':leave', [
+                animate('200ms ease-in', style({ opacity: 0, transform: 'translateY(20px)' }))
+            ])
+        ])
+    ]
 })
 export class ContactComponent {
   private fb = inject(FormBuilder);

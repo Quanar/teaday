@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-modal',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'app-modal',
+    imports: [CommonModule, FormsModule],
+    template: `
     <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
         <!-- Кнопка закрытия -->

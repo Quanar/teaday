@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
-  selector: 'app-partnership',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-partnership',
+    imports: [CommonModule],
+    template: `
     <section id="partnership" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <!-- Заголовок и преимущества (оставляем без изменений) -->
@@ -74,7 +73,7 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .feature-card {
       @apply bg-white p-6 rounded-lg shadow-sm;
       transition: transform 0.3s ease;
@@ -121,19 +120,18 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
       }
     }
   `],
-  animations: [
-    trigger('staggerSteps', [
-      transition(':enter', [
-        query('.step-card', [
-          style({ opacity: 0, transform: 'translateX(30px)' }),
-          stagger('150ms', [
-            animate('800ms cubic-bezier(0.35, 0, 0.25, 1)',
-              style({ opacity: 1, transform: 'translateX(0)' }))
-          ])
+    animations: [
+        trigger('staggerSteps', [
+            transition(':enter', [
+                query('.step-card', [
+                    style({ opacity: 0, transform: 'translateX(30px)' }),
+                    stagger('150ms', [
+                        animate('800ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'translateX(0)' }))
+                    ])
+                ])
+            ])
         ])
-      ])
-    ])
-  ]
+    ]
 })
 export class PartnershipComponent {
   currentStep = signal(0);

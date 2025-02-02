@@ -23,51 +23,47 @@ interface TeaCup {
 }
 
 @Component({
-  selector: 'app-hero',
-  standalone: true,
-  imports: [CommonModule, ModalComponent],
-  animations: [
-    trigger('slideAnimation', [
-      state('void', style({
-        opacity: 0,
-        transform: 'scale(0.9) translateY(20px)'
-      })),
-      state('*', style({
-        opacity: 1,
-        transform: 'scale(1) translateY(0)'
-      })),
-      transition('void => *', animate('600ms cubic-bezier(0.35, 0, 0.25, 1)')),
-      transition('* => void', animate('400ms cubic-bezier(0.35, 0, 0.25, 1)'))
-    ]),
-    trigger('staggerList', [
-      transition('* => *', [
-        query(':enter', [
-          style({ opacity: 0, transform: 'translateY(20px)' }),
-          stagger(100, [
-            animate('500ms cubic-bezier(0.35, 0, 0.25, 1)',
-              style({ opacity: 1, transform: 'translateY(0)' }))
-          ])
-        ], { optional: true })
-      ])
-    ]),
-    trigger('fadeSlide', [
-      transition(':increment, :decrement', [
-        group([
-          query(':enter', [
-            style({ opacity: 0, transform: '{{enterTransform}}' }),
-            animate('600ms ease-out',
-              style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }))
-          ], { optional: true }),
-          query(':leave', [
-            style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }),
-            animate('600ms ease-out',
-              style({ opacity: 0, transform: '{{leaveTransform}}' }))
-          ], { optional: true })
+    selector: 'app-hero',
+    imports: [CommonModule, ModalComponent],
+    animations: [
+        trigger('slideAnimation', [
+            state('void', style({
+                opacity: 0,
+                transform: 'scale(0.9) translateY(20px)'
+            })),
+            state('*', style({
+                opacity: 1,
+                transform: 'scale(1) translateY(0)'
+            })),
+            transition('void => *', animate('600ms cubic-bezier(0.35, 0, 0.25, 1)')),
+            transition('* => void', animate('400ms cubic-bezier(0.35, 0, 0.25, 1)'))
+        ]),
+        trigger('staggerList', [
+            transition('* => *', [
+                query(':enter', [
+                    style({ opacity: 0, transform: 'translateY(20px)' }),
+                    stagger(100, [
+                        animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'translateY(0)' }))
+                    ])
+                ], { optional: true })
+            ])
+        ]),
+        trigger('fadeSlide', [
+            transition(':increment, :decrement', [
+                group([
+                    query(':enter', [
+                        style({ opacity: 0, transform: '{{enterTransform}}' }),
+                        animate('600ms ease-out', style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }))
+                    ], { optional: true }),
+                    query(':leave', [
+                        style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }),
+                        animate('600ms ease-out', style({ opacity: 0, transform: '{{leaveTransform}}' }))
+                    ], { optional: true })
+                ])
+            ])
         ])
-      ])
-    ])
-  ],
-  template: `
+    ],
+    template: `
     <section
       class="min-h-[100dvh] relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-purple-50"
       role="banner"
@@ -256,7 +252,7 @@ interface TeaCup {
       (close)="closeModal()">
     </app-modal>
   `,
-  styles: [`
+    styles: [`
     .perspective-1000 {
       perspective: 1000px;
     }

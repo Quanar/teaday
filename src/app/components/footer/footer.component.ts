@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-footer',
+    imports: [CommonModule],
+    template: `
     <footer class="bg-black text-white py-8">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -57,7 +56,7 @@ import { CommonModule } from '@angular/common';
       </div>
     </footer>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: block;
     }

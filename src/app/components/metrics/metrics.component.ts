@@ -12,10 +12,9 @@ interface MetricItem {
 }
 
 @Component({
-  selector: 'app-metrics',
-  standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
-  template: `
+    selector: 'app-metrics',
+    imports: [CommonModule, NgOptimizedImage],
+    template: `
     <section id="metrics" class="py-20 bg-gray-50 relative overflow-hidden">
       <!-- Декоративный фон -->
       <div class="absolute inset-0">
@@ -114,7 +113,7 @@ interface MetricItem {
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .animate-metric {
       animation: metric-appear 0.6s ease-out forwards;
     }

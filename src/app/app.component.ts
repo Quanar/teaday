@@ -14,24 +14,23 @@ import {FooterComponent} from './components/footer/footer.component';
 import {SocialIconsComponent} from "./components/social-icons/social-icons.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    HeaderComponent,
-    HeroComponent,
-    ConceptComponent,
-    MetricsComponent,
-    BusinessModelComponent,
-    PartnershipComponent,
-    FormatsComponent,
-    ContactComponent,
-    FooterComponent,
-    GeographyMapComponent,
-    SocialIconsComponent
-  ],
-  template: `
+    selector: 'app-root',
+    imports: [
+        CommonModule,
+        RouterModule,
+        HeaderComponent,
+        HeroComponent,
+        ConceptComponent,
+        MetricsComponent,
+        BusinessModelComponent,
+        PartnershipComponent,
+        FormatsComponent,
+        ContactComponent,
+        FooterComponent,
+        GeographyMapComponent,
+        SocialIconsComponent
+    ],
+    template: `
     <app-header/>
     <main>
       <app-hero/>

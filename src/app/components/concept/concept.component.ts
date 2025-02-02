@@ -13,11 +13,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-concept',
-  standalone: true,
-  imports: [CommonModule, FaIconComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+    selector: 'app-concept',
+    imports: [CommonModule, FaIconComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `
     <section
       id="concept"
       class="relative py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
@@ -129,7 +128,7 @@ import {
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: block;
       --parallax-strength: 1;
@@ -159,49 +158,45 @@ import {
       display: block;
     }
   `],
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('800ms cubic-bezier(0.4, 0, 0.2, 1)',
-          style({ opacity: 1, transform: 'translateY(0)' }))
-      ])
-    ]),
-    trigger('staggerFade', [
-      transition(':enter', [
-        query('.concept-item', [
-          style({ opacity: 0, transform: 'translateY(20px)' }),
-          stagger('150ms', [
-            animate('600ms cubic-bezier(0.4, 0, 0.2, 1)',
-              style({ opacity: 1, transform: 'translateY(0)' }))
-          ])
+    animations: [
+        trigger('fadeIn', [
+            transition(':enter', [
+                style({ opacity: 0, transform: 'translateY(20px)' }),
+                animate('800ms cubic-bezier(0.4, 0, 0.2, 1)', style({ opacity: 1, transform: 'translateY(0)' }))
+            ])
+        ]),
+        trigger('staggerFade', [
+            transition(':enter', [
+                query('.concept-item', [
+                    style({ opacity: 0, transform: 'translateY(20px)' }),
+                    stagger('150ms', [
+                        animate('600ms cubic-bezier(0.4, 0, 0.2, 1)', style({ opacity: 1, transform: 'translateY(0)' }))
+                    ])
+                ])
+            ])
+        ]),
+        trigger('pulse', [
+            state('in', style({})),
+            transition('void => in', [
+                style({ transform: 'scale(0.8)', opacity: 0 }),
+                animate('1000ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'scale(1)', opacity: 1 }))
+            ])
+        ]),
+        trigger('glowText', [
+            state('in', style({})),
+            transition('void => in', [
+                style({ opacity: 0, filter: 'blur(8px)' }),
+                animate('1200ms cubic-bezier(0.4, 0, 0.2, 1)', style({ opacity: 1, filter: 'blur(0)' }))
+            ])
+        ]),
+        trigger('itemHover', [
+            state('idle', style({})),
+            state('hovered', style({
+                transform: 'scale(1.02)'
+            })),
+            transition('idle <=> hovered', animate('200ms ease-out'))
         ])
-      ])
-    ]),
-    trigger('pulse', [
-      state('in', style({})),
-      transition('void => in', [
-        style({ transform: 'scale(0.8)', opacity: 0 }),
-        animate('1000ms cubic-bezier(0.4, 0, 0.2, 1)',
-          style({ transform: 'scale(1)', opacity: 1 }))
-      ])
-    ]),
-    trigger('glowText', [
-      state('in', style({})),
-      transition('void => in', [
-        style({ opacity: 0, filter: 'blur(8px)' }),
-        animate('1200ms cubic-bezier(0.4, 0, 0.2, 1)',
-          style({ opacity: 1, filter: 'blur(0)' }))
-      ])
-    ]),
-    trigger('itemHover', [
-      state('idle', style({})),
-      state('hovered', style({
-        transform: 'scale(1.02)'
-      })),
-      transition('idle <=> hovered', animate('200ms ease-out'))
-    ])
-  ]
+    ]
 })
 export class ConceptComponent {
   private elementRef = inject(ElementRef);
