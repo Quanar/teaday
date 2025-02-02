@@ -12,6 +12,7 @@ import {
   stagger,
   group
 } from '@angular/animations';
+import {RouterLink} from "@angular/router";
 
 interface TeaCup {
   image: string;
@@ -23,47 +24,51 @@ interface TeaCup {
 }
 
 @Component({
-    selector: 'app-hero',
-    imports: [CommonModule, ModalComponent],
-    animations: [
-        trigger('slideAnimation', [
-            state('void', style({
-                opacity: 0,
-                transform: 'scale(0.9) translateY(20px)'
-            })),
-            state('*', style({
-                opacity: 1,
-                transform: 'scale(1) translateY(0)'
-            })),
-            transition('void => *', animate('600ms cubic-bezier(0.35, 0, 0.25, 1)')),
-            transition('* => void', animate('400ms cubic-bezier(0.35, 0, 0.25, 1)'))
-        ]),
-        trigger('staggerList', [
-            transition('* => *', [
-                query(':enter', [
-                    style({ opacity: 0, transform: 'translateY(20px)' }),
-                    stagger(100, [
-                        animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'translateY(0)' }))
-                    ])
-                ], { optional: true })
-            ])
-        ]),
-        trigger('fadeSlide', [
-            transition(':increment, :decrement', [
-                group([
-                    query(':enter', [
-                        style({ opacity: 0, transform: '{{enterTransform}}' }),
-                        animate('600ms ease-out', style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }))
-                    ], { optional: true }),
-                    query(':leave', [
-                        style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }),
-                        animate('600ms ease-out', style({ opacity: 0, transform: '{{leaveTransform}}' }))
-                    ], { optional: true })
-                ])
-            ])
+  selector: 'app-hero',
+  standalone: true,
+  imports: [CommonModule, ModalComponent, RouterLink],
+  animations: [
+    trigger('slideAnimation', [
+      state('void', style({
+        opacity: 0,
+        transform: 'scale(0.9) translateY(20px)'
+      })),
+      state('*', style({
+        opacity: 1,
+        transform: 'scale(1) translateY(0)'
+      })),
+      transition('void => *', animate('600ms cubic-bezier(0.35, 0, 0.25, 1)')),
+      transition('* => void', animate('400ms cubic-bezier(0.35, 0, 0.25, 1)'))
+    ]),
+    trigger('staggerList', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateY(20px)' }),
+          stagger(100, [
+            animate('500ms cubic-bezier(0.35, 0, 0.25, 1)',
+              style({ opacity: 1, transform: 'translateY(0)' }))
+          ])
+        ], { optional: true })
+      ])
+    ]),
+    trigger('fadeSlide', [
+      transition(':increment, :decrement', [
+        group([
+          query(':enter', [
+            style({ opacity: 0, transform: '{{enterTransform}}' }),
+            animate('600ms ease-out',
+              style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }))
+          ], { optional: true }),
+          query(':leave', [
+            style({ opacity: 1, transform: 'translate3d(0, 0, 0)' }),
+            animate('600ms ease-out',
+              style({ opacity: 0, transform: '{{leaveTransform}}' }))
+          ], { optional: true })
         ])
-    ],
-    template: `
+      ])
+    ])
+  ],
+  template: `
     <section
       class="min-h-[100dvh] relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-purple-50"
       role="banner"
@@ -117,11 +122,11 @@ interface TeaCup {
             <!-- Кнопки -->
             <div class="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center md:justify-start w-full">
               <button
-                (click)="openModal()"
                 class="group relative px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-4 bg-blue-600 text-white
                        rounded-xl font-semibold text-sm xs:text-base sm:text-lg w-full xs:w-auto
                        overflow-hidden transition-all duration-300 hover:bg-blue-700
                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <a href="#contacts">
                 <span class="relative z-10 flex items-center justify-center">
                   ОСТАВИТЬ ЗАЯВКУ
                   <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1"
@@ -130,6 +135,7 @@ interface TeaCup {
                           d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                   </svg>
                 </span>
+                </a>
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600
                            opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
@@ -252,7 +258,7 @@ interface TeaCup {
       (close)="closeModal()">
     </app-modal>
   `,
-    styles: [`
+  styles: [`
     .perspective-1000 {
       perspective: 1000px;
     }
