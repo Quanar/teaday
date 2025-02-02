@@ -1,14 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DataService} from "../../services/data.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {FadeDirective} from "../../directives/fade.directive";
+import {environment} from "../../../environments/environment-telegram";
+import {EmailService} from "../../services/email.service";
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FadeDirective],
+  imports: [CommonModule, ReactiveFormsModule, FadeDirective, FormsModule],
   template: `
     <section id="contacts"
              class="py-20 bg-gradient-to-b from-coral-light to-white relative overflow-hidden">
@@ -73,14 +75,23 @@ import {FadeDirective} from "../../directives/fade.directive";
                 <label class="block text-sm font-medium text-gray-700 mb-1">
                   Телефон*
                 </label>
+                <div class="flex gap-1">
+                  <select
+                    formControlName="countryCode"
+                    class="cursor-pointer h-[42px] w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option *ngFor="let country of countries" [value]="country.prefix">
+                      {{ country.flag }} {{ country.prefix }}
+                    </option>
+                  </select>
                 <input type="tel"
                        formControlName="phone"
                        class="form-input w-full px-4 py-2 rounded-lg border transition-colors
                               focus:outline-none focus:ring-2 focus:ring-coral"
                        [class.border-red-500]="showError('phone')">
-                <div *ngIf="showError('phone')"
-                     class="text-red-500 text-sm mt-1 pl-1">
-                  Введите корректный номер телефона
+<!--                <div *ngIf="showError('phone')"-->
+<!--                     class="text-red-500 text-sm mt-1 pl-1">-->
+<!--                  Введите корректный номер телефона-->
+<!--                </div>-->
                 </div>
               </div>
 
@@ -241,6 +252,21 @@ export class ContactComponent {
   private fb = inject(FormBuilder);
   private dataService = inject(DataService);
 
+  selectedCountry = '+7'; // Код Казахстана
+  countries = [
+    { code: '+7', flag: '🇰🇿', prefix: '+7' }, // Казахстан
+    { code: '+7', flag: '🇷🇺', prefix: '+7' }, // Россия
+    { code: '+1', flag: '🇺🇸', prefix: '+1' }, // США
+    { code: '+44', flag: '🇬🇧', prefix: '+44' }, // Великобритания
+    { code: '+49', flag: '🇩🇪', prefix: '+49' }, // Германия
+    { code: '+33', flag: '🇫🇷', prefix: '+33' }, // Франция
+    { code: '+81', flag: '🇯🇵', prefix: '+81' }, // Япония
+    { code: '+86', flag: '🇨🇳', prefix: '+86' }, // Китай
+    { code: '+91', flag: '🇮🇳', prefix: '+91' }, // Индия
+    { code: '+61', flag: '🇦🇺', prefix: '+61' }, // Австралия
+    { code: '+55', flag: '🇧🇷', prefix: '+55' }, // Бразилия
+    // Добавьте другие страны по необходимости
+  ];
   // Состояния
   isSubmitting = signal(false);
   isSuccess = signal(false);
@@ -254,8 +280,9 @@ export class ContactComponent {
     ]],
     phone: ['', [
       Validators.required,
-      Validators.pattern(/^\\+?[0-9]{10,12}$/)
+      // Validators.pattern(/^\\+?[0-9]{10,12}$/)
     ]],
+    countryCode: ['', Validators.required],
     email: ['', [
       Validators.required,
       Validators.email
@@ -267,8 +294,26 @@ export class ContactComponent {
     comment: [''],
     agreement: [false, [
       Validators.requiredTrue
-    ]]
+    ]],
   });
+  constructor(private emailService: EmailService) {
+  }
+
+  ngOnInit() {
+    // Устанавливаем префикс телефона по умолчанию для Казахстана
+    this.updatePhonePrefix();
+  }
+
+  updatePhonePrefix() {
+    const selectedCountry = this.countries.find(country => country.code === this.selectedCountry);
+    if (selectedCountry) {
+      this.contactForm.patchValue({
+        countryCode: selectedCountry.prefix,
+        phone: this.contactForm.value.phone?.replace( /^\+\d+\s*/, '' ) || ''
+      });
+    }
+  }
+
 
   // Вспомогательные методы
   showError(fieldName: string): boolean {
@@ -279,28 +324,44 @@ export class ContactComponent {
   random(min: number, max: number): number {
     return Math.random() * (max - min) + min;
   }
+  sendToTelegram(formData: any) {
+    const botToken = environment.telegramBotToken;
+    const chatId = '1136289645';
 
-  // Обработка отправки
-  async onSubmit() {
-    if (this.contactForm.valid && !this.isSubmitting()) {
-      this.isSubmitting.set(true);
-      try {
-        await this.dataService.submitApplication(this.contactForm.value);
-        this.isSuccess.set(true);
-        this.contactForm.reset();
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        // Здесь можно добавить обработку ошибок
-      } finally {
-        this.isSubmitting.set(false);
-      }
+    const text = `
+    Новая заявка:
+    Имя: ${formData.name}
+    Email: ${formData.email}
+    Телефон: ${formData.phone}
+    Город: ${formData.city}
+  `;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => console.log('Сообщение отправлено:', data))
+      .catch(error => console.error('Ошибка при отправке:', error));
+  }
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      const formData = this.contactForm.value;
+
+      // Собираем телефон в правильном формате
+      const fullPhoneNumber = `${formData.countryCode} ${formData.phone}`.trim();
+
+      const finalData = {
+        ...formData,
+        phone: fullPhoneNumber, // Перезаписываем phone с кодом страны
+      };
+
+      this.sendToTelegram(finalData);
+      this.emailService.sendEmail(finalData);
+
+      this.contactForm.reset();
     } else {
-      Object.keys(this.contactForm.controls).forEach(key => {
-        const control = this.contactForm.get(key);
-        if (control) {
-          control.markAsTouched();
-        }
-      });
+      console.error('Форма не валидна');
     }
   }
 

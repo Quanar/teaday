@@ -12,6 +12,7 @@ import {
   stagger,
   group
 } from '@angular/animations';
+import {RouterLink} from "@angular/router";
 
 interface TeaCup {
   image: string;
@@ -25,7 +26,7 @@ interface TeaCup {
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, ModalComponent],
+  imports: [CommonModule, ModalComponent, RouterLink],
   animations: [
     trigger('slideAnimation', [
       state('void', style({
@@ -121,11 +122,11 @@ interface TeaCup {
             <!-- Кнопки -->
             <div class="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center md:justify-start w-full">
               <button
-                (click)="openModal()"
                 class="group relative px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-4 bg-blue-600 text-white
                        rounded-xl font-semibold text-sm xs:text-base sm:text-lg w-full xs:w-auto
                        overflow-hidden transition-all duration-300 hover:bg-blue-700
                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <a href="#contacts">
                 <span class="relative z-10 flex items-center justify-center">
                   ОСТАВИТЬ ЗАЯВКУ
                   <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1"
@@ -134,6 +135,7 @@ interface TeaCup {
                           d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                   </svg>
                 </span>
+                </a>
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600
                            opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
