@@ -47,7 +47,6 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
                  class="w-full rounded-lg shadow-lg">
           </div>
         </div>
-        <h3 class="font-bold text-coral">Стать партнером по франшизе</h3>
       </div>
     </section>
   `,
