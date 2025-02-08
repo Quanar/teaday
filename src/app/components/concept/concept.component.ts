@@ -1,16 +1,8 @@
-import {Component, signal, ChangeDetectionStrategy, Signal, HostListener, ElementRef, inject} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, Signal, HostListener, ElementRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, stagger, query, state } from '@angular/animations';
 import { CONCEPT_ITEMS, ConceptItem } from './concept.data';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import {
-  faFingerprint,
-  faLeaf,
-  faLightbulb,
-  faStar,
-  faStore,
-  faUsers
-} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-concept',
@@ -20,7 +12,7 @@ import {
   template: `
     <section
       id="concept"
-      class="relative py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+      class="relative py-6 sm:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
       role="region"
       aria-labelledby="concept-title">
 
@@ -42,10 +34,10 @@ import {
 
       <div class="container relative mx-auto px-4">
         <!-- Заголовок с декоративным подчеркиванием -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-12">
           <h2
             id="concept-title"
-            class="inline-block text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-coral to-teal-600"
+            class="inline-block text-3xl sm:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-coral to-teal-600"
             [@glowText]="'in'">
             КОНЦЕПЦИЯ
           </h2>
@@ -54,75 +46,63 @@ import {
 
         <!-- Основной текст с эффектом появления -->
         <div
-          class="text-center max-w-3xl mx-auto mb-20"
+          class="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
           [@fadeIn]
           role="presentation">
-          <p class="text-lg leading-relaxed text-gray-700">
-            <span class="font-bold text-coral">TEADAY</span> — это больше, чем просто место, где можно купить напиток.
-            Это уникальная атмосфера, объединяющая современный стиль, яркие вкусы
-            и инновационные подходы к традиционным напиткам. Мы стремимся создавать
-            пространство, где каждый гость чувствует себя частью чего-то особенного.
+          <p class="text-base sm:text-lg leading-relaxed text-gray-700">
+            буква «<span class="font-bold text-coral">É</span>» с трубочкой, символизирующая свежий взгляд на привычные
+            чайные традиции и современный подход к напиткам
           </p>
         </div>
 
-        <!-- Круговая композиция -->
-        <div class="relative max-w-5xl mx-auto">
-          <!-- Центральный логотип с пульсацией и параллаксом -->
-          <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-transform duration-300"
-            [style.transform]="'translate3d(' +
-            'calc(-50% + ' + parallaxX(-10) + 'px), ' +
-            'calc(-50% + ' + parallaxY(-10) + 'px), 0)'"
-            role="img"
-            aria-label="Логотип TEADAY">
-            <div class="relative">
-              <div class="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-full"></div>
-              <img
-                [src]="logoPath"
-                alt="TEADAY"
-                class="relative w-32 h-32 object-contain p-4"
-                (error)="handleImageError($event)"
-                [class.hidden]="isLogoError()"
-                [@pulse]="'in'">
-              <div
-                *ngIf="isLogoError()"
-                class="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 font-bold">
-                TEADAY
+        <!-- Позиционирование -->
+        <div class="max-w-4xl mx-auto mb-8">
+          <h3 class="text-base font-medium mb-6 text-gray-900">
+            Позиционирование
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Дружелюбный -->
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start">
+                <span class="text-coral mr-2">-</span>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  <span class="font-medium text-yellow-500">Дружелюбный:</span>
+                  Коммуникация строится на простоте, тёплом общении и создании уютной атмосферы.
+                </p>
               </div>
             </div>
-            <!-- Пульсирующие круги -->
-            <div class="absolute inset-0 -z-10">
-              <div class="absolute inset-0 animate-ping-slow bg-coral/20 rounded-full"></div>
-              <div class="absolute inset-0 animate-ping-slower bg-teal-500/20 rounded-full"></div>
-            </div>
-          </div>
 
-          <!-- Преимущества в сетке с hover-эффектами -->
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            [@staggerFade]
-            role="list">
-            <div
-              *ngFor="let item of conceptItems(); let i = index"
-              class="concept-item group"
-              role="listitem"
-              [attr.aria-posinset]="i + 1"
-              [attr.aria-setsize]="conceptItems().length"
-              (mouseenter)="onItemHover(i)"
-              [@itemHover]="hoveredIndex() === i ? 'hovered' : 'idle'">
-              <div class="relative z-10">
-                <div class="mb-4">
-                  <div class="w-12 h-12 rounded-full bg-gradient-to-br from-coral to-coral-dark flex items-center justify-center text-white mb-2 transform group-hover:scale-110 transition-transform">
-                    <fa-icon
-                      [icon]="getIcon(i)"
-                      class="text-xl">
-                    </fa-icon>
-                  </div>
-                </div>
-                <h3 class="font-bold text-xl mb-3 group-hover:text-coral transition-colors">{{ item.title }}</h3>
-                <p class="text-gray-600 group-hover:text-gray-700 transition-colors">{{ item.description }}</p>
+            <!-- Игривый -->
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start">
+                <span class="text-coral mr-2">-</span>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  <span class="font-medium text-purple-500">Игривый:</span>
+                  Легкий юмор, интересные акценты и позитивное настроение помогают бренду быть ближе к аудитории.
+                </p>
               </div>
-              <div class="absolute inset-0 bg-gradient-to-br from-coral/5 to-coral-dark/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+            </div>
+
+            <!-- Современный -->
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start">
+                <span class="text-coral mr-2">-</span>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  <span class="font-medium text-blue-500">Современный:</span>
+                  Язык, которым говорит бренд, отражает текущие тренды, но сохраняет доступность для всех возрастов.
+                </p>
+              </div>
+            </div>
+
+            <!-- Энергичный -->
+            <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start">
+                <span class="text-coral mr-2">-</span>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  <span class="font-medium text-red-500">Энергичный:</span>
+                  Призывы к действию и яркие сообщения вдохновляют аудиторию наслаждаться каждым моментом вместе с TeaDay.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -135,28 +115,11 @@ import {
       --parallax-strength: 1;
     }
 
-    .concept-item {
-      @apply relative bg-white p-8 rounded-lg shadow-sm transition-all duration-300;
-      @apply hover:shadow-xl hover:-translate-y-1;
-    }
-
-    .animate-ping-slow {
-      animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-
-    .animate-ping-slower {
-      animation: ping 4s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-
     @keyframes ping {
       75%, 100% {
         transform: scale(2);
         opacity: 0;
       }
-    }
-
-    :host {
-      display: block;
     }
   `],
   animations: [
@@ -205,23 +168,12 @@ import {
 })
 export class ConceptComponent {
   private elementRef = inject(ElementRef);
-  logoPath = 'assets/images/teaday.png';
-  isLogoError = signal(false);
   conceptItems: Signal<ConceptItem[]> = signal(CONCEPT_ITEMS);
   hoveredIndex = signal<number | null>(null);
 
   private scrollPosition = signal({ x: 0, y: 0 });
   private mousePosition = signal({ x: 0, y: 0 });
   private sectionRect = signal<DOMRect | null>(null);
-
-  private readonly icons = [
-    faFingerprint,  // Индивидуальность
-    faLeaf,         // Яркие вкусы
-    faLightbulb,    // Инновации
-    faStore,        // Доступность
-    faUsers,        // Пространство
-    faStar          // Миссия
-  ];
 
   ngOnInit() {
     this.updateSectionRect();
@@ -233,19 +185,6 @@ export class ConceptComponent {
     if (element) {
       this.sectionRect.set(element.getBoundingClientRect());
     }
-  }
-
-  handleImageError(event: ErrorEvent): void {
-    this.isLogoError.set(true);
-    console.error('Failed to load logo:', event);
-  }
-
-  onItemHover(index: number): void {
-    this.hoveredIndex.set(index);
-  }
-
-  getIcon(index: number) {
-    return this.icons[index] || faStar;
   }
 
   // Обработчик скролла

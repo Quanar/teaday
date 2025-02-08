@@ -123,7 +123,7 @@ export class HeaderComponent {
 
   menuItems = signal([
     { title: 'КОНЦЕПЦИЯ', href: '#concept' },
-    { title: 'ЦИФРЫ', href: '#metrics' },
+    { title: 'ЦИФРЫ', href: '#about-our-company' },
     { title: 'КАК СТАТЬ ПАРТНЕРОМ', href: '#partnership' },
     { title: 'ГЕОГРАФИЯ', href: '#geography' },
     { title: 'КОНТАКТЫ', href: '#contacts' }

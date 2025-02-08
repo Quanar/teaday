@@ -4,8 +4,7 @@ import {RouterModule} from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
 import {HeroComponent} from './components/hero/hero.component';
 import {ConceptComponent} from './components/concept/concept.component';
-import {MetricsComponent} from './components/metrics/metrics.component';
-import {BusinessModelComponent} from './components/business-model/business-model.component';
+import {AboutOurCompanyComponent} from './components/about-our-company/about-our-company.component';
 import {PartnershipComponent} from './components/partnership/partnership.component';
 import {GeographyMapComponent} from './components/geography/geography.component';
 import {FormatsComponent} from './components/formats/formats.component';
@@ -13,6 +12,7 @@ import {ContactComponent} from './components/contact/contact.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {SocialIconsComponent} from "./components/social-icons/social-icons.component";
 import {BrandIdentityComponent} from "./components/brand-identity/brand-identity.component";
+import {BrandValuesComponent} from "./components/brand-values/brand-values.component";
 
 @Component({
   selector: 'app-root',
@@ -23,23 +23,23 @@ import {BrandIdentityComponent} from "./components/brand-identity/brand-identity
     HeaderComponent,
     HeroComponent,
     ConceptComponent,
-    MetricsComponent,
-    BusinessModelComponent,
+    AboutOurCompanyComponent,
     PartnershipComponent,
     FormatsComponent,
     ContactComponent,
     FooterComponent,
     GeographyMapComponent,
     SocialIconsComponent,
-    BrandIdentityComponent
+    BrandIdentityComponent,
+    BrandValuesComponent
   ],
   template: `
     <app-header/>
     <main>
       <app-hero/>
+      <app-about-our-company/>
       <app-concept/>
-      <app-metrics/>
-      <app-business-model/>
+      <app-brand-values/>
       <app-partnership/>
       <app-geography-map/>
       <app-formats/>

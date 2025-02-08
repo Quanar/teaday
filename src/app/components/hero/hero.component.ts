@@ -70,7 +70,7 @@ interface TeaCup {
   ],
   template: `
     <section
-      class="min-h-[100dvh] relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-purple-50"
+      class="min-h-[100dvh] relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-purple-50 pb-2"
       role="banner"
       aria-label="Главный баннер">
 
@@ -87,7 +87,8 @@ interface TeaCup {
         <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
 
           <!-- Левая часть -->
-          <div class="flex flex-col items-center md:items-start space-y-4 sm:space-y-6 md:space-y-8 relative z-20" @slideAnimation>
+          <div class="flex flex-col items-center md:items-start space-y-4 sm:space-y-6 md:space-y-8 relative z-20"
+               @slideAnimation>
             <!-- Плашка франшизы -->
             <div class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 bg-blue-100 rounded-full text-blue-600
                       text-xs sm:text-sm font-medium">
@@ -98,7 +99,7 @@ interface TeaCup {
             <h1 class="text-3xl xs:text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight text-center md:text-left
                        bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent w-full">
               СТАНЬ ПАРТНЕРОМ
-              <div class="relative mt-2 sm:mt-4">
+              <div class="relative mt-2 sm:mt-4 mb-4 sm:mb-6">
                 <img
                   src="assets/images/teaday.png"
                   alt="TeaDay Logo"
@@ -106,17 +107,19 @@ interface TeaCup {
                   loading="lazy"
                   (error)="handleImageError($event)"
                 />
-                <div class="absolute -right-2 sm:-right-4 -top-2 sm:-top-4 bg-yellow-400 rounded-full p-1.5 sm:p-2 animate-bounce">
+                <div
+                  class="absolute -right-2 sm:-right-4 -top-2 sm:-top-4 bg-yellow-400 rounded-full p-1.5 sm:p-2 animate-bounce">
                   <span class="text-xs sm:text-sm font-bold">NEW</span>
                 </div>
               </div>
+              и зарабатывай от 20 000 000 тг в год
             </h1>
 
-            <!-- Описание -->
-            <p class="text-sm xs:text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed
-                      max-w-lg text-center md:text-left mx-auto md:mx-0">
-              Присоединяйтесь к инновационной сети чайных магазинов и создавайте
-              уникальные вкусовые впечатления в мире современного чайного искусства
+            <p
+              class="text-sm xs:text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-lg text-center md:text-left mx-auto md:mx-0">
+              <span class="text-coral">Teaday</span> - это идея лёгкости, бодрости и удовольствия от ежедневного
+              чаепития.
+              <span class="text-coral">Teaday</span> звучит как «день чая», ассоциируясь с приятным моментом в любое время суток.
             </p>
 
             <!-- Кнопки -->
@@ -128,43 +131,13 @@ interface TeaCup {
                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                 <a href="#contacts">
                 <span class="relative z-10 flex items-center justify-center">
-                  ОСТАВИТЬ ЗАЯВКУ
-                  <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1"
-                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
+                  Хочу стать партнером по франшизе
                 </span>
                 </a>
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600
                            opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
               </button>
-
-              <button
-                (click)="showInfo()"
-                class="px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-4 border-2 border-gray-300
-                       text-gray-700 rounded-xl font-semibold text-sm xs:text-base sm:text-lg
-                       transition-all hover:border-blue-500 hover:text-blue-600 w-full xs:w-auto">
-                Узнать больше
-              </button>
-            </div>
-
-            <!-- Статистика -->
-            <div class="grid grid-cols-3 gap-2 xs:gap-4 sm:gap-8 mt-6 sm:mt-8 pt-4 sm:pt-6
-                        border-t border-gray-200 w-full">
-              <div class="statistics-item text-center md:text-left">
-                <div class="text-xl xs:text-2xl sm:text-3xl font-bold text-blue-600">150+</div>
-                <div class="text-xs xs:text-sm sm:text-base text-gray-600 mt-0.5 sm:mt-1">Точек продаж</div>
-              </div>
-              <div class="statistics-item text-center md:text-left">
-                <div class="text-xl xs:text-2xl sm:text-3xl font-bold text-purple-600">98%</div>
-                <div class="text-xs xs:text-sm sm:text-base text-gray-600 mt-0.5 sm:mt-1">Довольных клиентов</div>
-              </div>
-              <div class="statistics-item text-center md:text-left">
-                <div class="text-xl xs:text-2xl sm:text-3xl font-bold text-pink-600">24/7</div>
-                <div class="text-xs xs:text-sm sm:text-base text-gray-600 mt-0.5 sm:mt-1">Поддержка</div>
-              </div>
             </div>
           </div>
 
@@ -192,10 +165,10 @@ interface TeaCup {
                               bg-white/90 backdrop-blur-md rounded-2xl p-3 xs:p-4 sm:p-6 opacity-0
                               group-hover:opacity-100 transition-all duration-300
                               translate-y-4 group-hover:translate-y-0">
-                    <h3 class="text-base xs:text-lg sm:text-xl font-bold mb-1 sm:mb-2">{{cup.name}}</h3>
-                    <p class="text-xs xs:text-sm sm:text-base text-gray-600 mb-2 sm:mb-4">{{cup.description}}</p>
+                    <h3 class="text-base xs:text-lg sm:text-xl font-bold mb-1 sm:mb-2">{{ cup.name }}</h3>
+                    <p class="text-xs xs:text-sm sm:text-base text-gray-600 mb-2 sm:mb-4">{{ cup.description }}</p>
                     <div class="flex justify-between items-center">
-                      <span class="text-blue-600 font-bold text-sm xs:text-base">{{cup.price}}</span>
+                      <span class="text-blue-600 font-bold text-sm xs:text-base">{{ cup.price }}</span>
                       <button class="px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 bg-blue-600 text-white
                                    text-xs xs:text-sm sm:text-base rounded-lg
                                    hover:bg-blue-700 transition-colors">
@@ -206,8 +179,8 @@ interface TeaCup {
 
                   <!-- Мобильная информационная карточка -->
                   <div class="sm:hidden mt-4 bg-white/90 backdrop-blur-md rounded-xl p-3 text-center">
-                    <h3 class="text-base font-bold">{{cup.name}}</h3>
-                    <p class="text-xs text-gray-600 mt-1">{{cup.description}}</p>
+                    <h3 class="text-base font-bold">{{ cup.name }}</h3>
+                    <p class="text-xs text-gray-600 mt-1">{{ cup.description }}</p>
                   </div>
 
                   <!-- Цветовой акцент -->
@@ -244,7 +217,7 @@ interface TeaCup {
                         text-blue-400/10 animate-spin-slow"
                  aria-hidden="true">
               <svg viewBox="0 0 100 100" class="w-full h-full">
-                <path d="M50 0A50 50 0 1050 100A50 50 0 1050 0" fill="none" stroke="currentColor" />
+                <path d="M50 0A50 50 0 1050 100A50 50 0 1050 0" fill="none" stroke="currentColor"/>
               </svg>
             </div>
           </div>
@@ -407,10 +380,6 @@ export class HeroComponent implements OnInit, OnDestroy {
   closeModal() {
     this.isModalOpen.set(false);
     document.body.style.overflow = '';
-  }
-
-  showInfo() {
-    this.scrollService.scrollToElement('info-section');
   }
 
   showCupDetails(cup: TeaCup) {
