@@ -37,7 +37,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
         <div class="text-center mb-12">
           <h2
             id="concept-title"
-            class="inline-block text-3xl sm:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-coral to-teal-600"
+            class="inline-block text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-coral to-teal-600"
             [@glowText]="'in'">
             КОНЦЕПЦИЯ
           </h2>
@@ -49,7 +49,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
           class="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
           [@fadeIn]
           role="presentation">
-          <p class="text-base sm:text-lg leading-relaxed text-gray-700">
+          <p class="text-base sm:text-lg lg:text-2xl leading-relaxed text-gray-700">
             буква «<span class="font-bold text-coral">É</span>» с трубочкой, символизирующая свежий взгляд на привычные
             чайные традиции и современный подход к напиткам
           </p>
@@ -57,7 +57,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
         <!-- Позиционирование -->
         <div class="max-w-4xl mx-auto mb-8">
-          <h3 class="text-base font-medium mb-6 text-gray-900">
+          <h3 class="text-base sm:text-lg lg:text-xl font-medium mb-6 text-coral">
             Позиционирование
           </h3>
           <div class="grid grid-cols-2 gap-4">
@@ -65,7 +65,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
             <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <div class="flex items-start">
                 <span class="text-coral mr-2">-</span>
-                <p class="text-xs sm:text-sm text-gray-600">
+                <p class="text-xs sm:text-sm lg:text-lg text-gray-600">
                   <span class="font-medium text-yellow-500">Дружелюбный:</span>
                   Коммуникация строится на простоте, тёплом общении и создании уютной атмосферы.
                 </p>
@@ -76,7 +76,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
             <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <div class="flex items-start">
                 <span class="text-coral mr-2">-</span>
-                <p class="text-xs sm:text-sm text-gray-600">
+                <p class="text-xs sm:text-sm lg:text-lg text-gray-600">
                   <span class="font-medium text-purple-500">Игривый:</span>
                   Легкий юмор, интересные акценты и позитивное настроение помогают бренду быть ближе к аудитории.
                 </p>
@@ -87,7 +87,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
             <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <div class="flex items-start">
                 <span class="text-coral mr-2">-</span>
-                <p class="text-xs sm:text-sm text-gray-600">
+                <p class="text-xs sm:text-sm lg:text-lg text-gray-600">
                   <span class="font-medium text-blue-500">Современный:</span>
                   Язык, которым говорит бренд, отражает текущие тренды, но сохраняет доступность для всех возрастов.
                 </p>
@@ -98,7 +98,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
             <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <div class="flex items-start">
                 <span class="text-coral mr-2">-</span>
-                <p class="text-xs sm:text-sm text-gray-600">
+                <p class="text-xs sm:text-sm lg:text-lg text-gray-600">
                   <span class="font-medium text-red-500">Энергичный:</span>
                   Призывы к действию и яркие сообщения вдохновляют аудиторию наслаждаться каждым моментом вместе с TeaDay.
                 </p>

@@ -112,14 +112,17 @@ interface TeaCup {
                   <span class="text-xs sm:text-sm font-bold">NEW</span>
                 </div>
               </div>
-              и зарабатывай от 20 000 000 тг в год
             </h1>
+
+            <p class="text-base xs:text-xl sm:text-2xl lg:text-3xl font-semibold text-blue-600
+                      max-w-lg text-center md:text-left mx-auto md:mx-0">
+              и зарабатывай от 20 000 000 тг в год
+            </p>
 
             <p
               class="text-sm xs:text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-lg text-center md:text-left mx-auto md:mx-0">
               <span class="text-coral">Teaday</span> - это идея лёгкости, бодрости и удовольствия от ежедневного
-              чаепития.
-              <span class="text-coral">Teaday</span> звучит как «день чая», ассоциируясь с приятным моментом в любое время суток.
+              чаепития. Teaday звучит как «день чая», ассоциируясь с приятным моментом в любое время суток.
             </p>
 
             <!-- Кнопки -->

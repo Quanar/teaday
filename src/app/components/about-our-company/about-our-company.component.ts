@@ -7,30 +7,54 @@ import {NgOptimizedImage} from '@angular/common';
   standalone: true,
   imports: [CommonModule, NgOptimizedImage],
   template: `
-    <section id="metrics" class="py-6 relative overflow-hidden">
-      <!-- Дополнительная информация -->
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-        <!-- Текстовый блок -->
-        <div class="lg:w-1/2">
-          <div class="px-8">
-            <h3 class="text-2xl font-bold mb-4 text-coral">О нашей компании</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              <span class="text-black font-bold">Первая Казахстанская сеть</span> чайных спотов от основателя <span class="text-black font-bold">EspressoDay</span>.
-            </p>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              <span class="text-black font-bold">Цель</span> – открыть <span class="text-black font-bold">100</span> чайных спотов по всему <span class="text-black font-bold">Казахстану</span> и не только.
-            </p>
+    <section id="about" class="relative py-6 overflow-hidden">
+      <div class="container relative mx-auto px-4">
+        <!-- Заголовок -->
+        <h2 class="text-4xl font-bold mb-12 text-coral">
+          О НАШЕЙ<br>КОМПАНИИ
+        </h2>
 
-            <!-- Изображение -->
-            <div class="mb-4 leading-relaxed">
-              <img
-                ngSrc="assets/images/about_our_company.jpg"
-                alt="О нашей компании"
-                width="350"
-                height="70"
-                class="rounded-lg shadow-lg"
-                priority
-              />
+        <div class="flex flex-col lg:flex-row gap-12">
+          <!-- Левая колонка -->
+          <div class="lg:w-1/2 lg:ml-8 flex flex-col justify-between">
+            <div>
+              <p class="text-lg mb-8">
+                <span class="text-black font-bold">Первая Казахстанская сеть</span> чайных спотов
+                от основателя <span class="text-black font-bold">EspressoDay</span>
+              </p>
+
+              <div>
+                <img
+                  ngSrc="assets/images/teaday_cups.jpg"
+                  alt="О нашей компании"
+                  width="450"
+                  height="200"
+                  class="rounded-lg shadow-lg object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка -->
+          <div class="lg:w-1/2 flex flex-col justify-between">
+            <div>
+              <div class="hidden lg:block mb-8">
+                <img
+                  ngSrc="assets/images/teaday_girl.jpg"
+                  alt="О нашей компании"
+                  width="500"
+                  height="350"
+                  class="rounded-lg shadow-lg object-cover"
+                  priority
+                />
+              </div>
+
+              <p class="text-lg">
+                <span class="text-black font-bold">Цель</span> – открыть
+                <span class="text-black font-bold">100</span> чайных спотов по всему
+                <span class="text-black font-bold">Казахстану</span> и не только
+              </p>
             </div>
           </div>
         </div>

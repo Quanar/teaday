@@ -40,7 +40,7 @@ import {BrandValuesComponent} from "./components/brand-values/brand-values.compo
       <app-about-our-company/>
       <app-concept/>
       <app-brand-values/>
-      <app-partnership/>
+<!--      <app-partnership/>-->
       <app-geography-map/>
       <app-formats/>
       <app-contact/>
