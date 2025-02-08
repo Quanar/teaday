@@ -11,7 +11,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">
           ВЫБЕРИ СВОЙ ФОРМАТ<br>
-          ЧАЙНОГО ДОМА <span class="text-coral">TEADAY</span>
+          <span class="text-coral">TEADAY</span>
         </h2>
 
         <!-- Табы форматов -->
@@ -40,7 +40,6 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
               </ul>
             </div>
           </div>
-
           <!-- Изображение -->
           <div class="lg:w-1/2">
             <img [src]="getCurrentFormat().image"
@@ -48,6 +47,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
                  class="w-full rounded-lg shadow-lg">
           </div>
         </div>
+        <h3 class="font-bold text-coral">Стать партнером по франшизе</h3>
       </div>
     </section>
   `,
@@ -79,36 +79,34 @@ export class FormatsComponent {
   formats = signal([
     {
       id: 'cafe',
-      name: 'Кафе',
-      description: 'Полноценное кафе с посадочными местами и расширенным меню.',
+      name: 'Помещение',
+      description: 'Коммерческие помещения, ' +
+        'которые расположены на первой линии, на центральных улицах или в спальном районе.' +
+        ' Важно учесть три основных показателя для чайной: трафик, удобная парковка, общий вид на чайную.',
       specifications: [
-        { label: 'Площадь', value: 'от 50-120 кв. м.' },
-        { label: 'Инвестиции', value: 'от 25 млн. тг.' },
-        { label: 'Сроки открытия', value: 'от 2 мес' }
+        { label: 'Сроки открытия', value: 'до 2 мес.' },
+        { label: 'Площадь', value: 'от 40-100 кв.' },
+        { label: 'Инвестиции', value: 'от 20 млн. до 30 млн.' },
+        { label: 'Окупаемость', value: '18 месяцев в среднем.' },
+        { label: 'Роялти', value: '3 от оборота.' },
+        { label: 'Паушальный взнос', value: '3 500 000 тг.' }
+
       ],
       image: 'assets/images/format-cafe.svg'
     },
     {
       id: 'island',
-      name: 'Остров',
-      description: 'Компактная точка в торговом центре с базовым ассортиментом.',
+      name: 'Корнер',
+      description: 'Островки в ТРЦ и Бизнес центре, университеты отличные места для установки чайных.',
       specifications: [
-        { label: 'Площадь', value: 'от 6-15 кв. м.' },
-        { label: 'Инвестиции', value: 'от 18 млн. тг.' },
-        { label: 'Сроки открытия', value: 'от 1.5 мес' }
+        { label: 'Сроки открытия', value: 'до 2 мес.' },
+        { label: 'Площадь', value: 'от 10 до 30 кв' },
+        { label: 'Инвестиции', value: 'от 15 млн. до 20 млн.' },
+        { label: 'Окупаемость', value: '18 месяцев в среднем ' },
+        { label: 'Роялти', value: '3 от оборота.' },
+        { label: 'Паушальный взнос', value: '3 000 000 тг.' }
       ],
       image: 'assets/images/format-island.svg'
-    },
-    {
-      id: 'kiosk',
-      name: 'Киоск',
-      description: 'Мобильный и универсальный формат, идеально подходящий для мест с высоким потоком людей на открытом воздухе. Это отличный выбор для парков, набережных и других общественных мест. Киоск привлекает клиентов ярким оформлением и возможностью быстро приобрести любимый напиток.',
-      specifications: [
-        { label: 'Площадь', value: 'от 15-30 кв. м.' },
-        { label: 'Инвестиции', value: 'от 15 млн. тг.' },
-        { label: 'Сроки открытия', value: 'от 1 мес' }
-      ],
-      image: 'assets/images/format-kiosk.svg'
     }
   ]);
 

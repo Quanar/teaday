@@ -10,20 +10,20 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
     <section id="partnership" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <!-- Заголовок и преимущества (оставляем без изменений) -->
-        <h2 class="text-3xl font-bold text-center mb-8">
-          ПАРТНЕРСТВО С <span class="text-coral">TEADAY</span> ЭТО
-        </h2>
+<!--        <h2 class="text-3xl font-bold text-center mb-8">-->
+<!--          Скачайте показатели франшизы и свяжитесь с нами  <span class="text-coral">TEADAY</span>-->
+<!--        </h2>-->
 
         <!-- Преимущества партнерства -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          <div *ngFor="let feature of features()" class="feature-card">
-            <div class="icon-wrapper mb-4">
-              <img [src]="feature.icon" [alt]="feature.title" class="w-12 h-12">
-            </div>
-            <h3 class="text-xl font-bold mb-3">{{feature.title}}</h3>
-            <p>{{feature.description}}</p>
-          </div>
-        </div>
+<!--        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">-->
+<!--          <div *ngFor="let feature of features()" class="feature-card">-->
+<!--            <div class="icon-wrapper mb-4">-->
+<!--              <img [src]="feature.icon" [alt]="feature.title" class="w-12 h-12">-->
+<!--            </div>-->
+<!--            <h3 class="text-xl font-bold mb-3">{{feature.title}}</h3>-->
+<!--            <p>{{feature.description}}</p>-->
+<!--          </div>-->
+<!--        </div>-->
 
         <!-- Этапы партнерства (применяем изменения) -->
         <div class="partnership-steps bg-white rounded-2xl shadow-lg p-12 relative overflow-hidden">
@@ -37,16 +37,17 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
 
           <div class="text-center mb-16">
             <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-              КАК СТАТЬ ПАРТНЕРОМ
+              Ваш
               <span class="text-coral relative">
                 TEADAY
                 <div class="absolute -inset-1 bg-coral opacity-20 blur-sm rounded-lg"></div>
               </span>
+              за 2 месяца
             </h3>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-              Каждый партнер – это наш союзник. Мы ищем тех, кто разделяет наши ценности,
-              готов развиваться вместе с нами и вносить свой вклад в общее дело.
-            </p>
+<!--            <p class="text-lg text-gray-600 max-w-3xl mx-auto">-->
+<!--              Каждый партнер – это наш союзник. Мы ищем тех, кто разделяет наши ценности,-->
+<!--              готов развиваться вместе с нами и вносить свой вклад в общее дело.-->
+<!--            </p>-->
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -139,63 +140,68 @@ export class PartnershipComponent {
   currentStep = signal(0);
   progressWidth = computed(() => (this.currentStep() + 1) * (100 / this.steps().length));
 
-  features = signal([
-    {
-      icon: 'assets/icons/support_agent_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg',
-      title: 'Полная поддержка партнеров',
-      description: 'на всех этапах развития'
-    },
-    {
-      icon: 'assets/icons/chat_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg',
-      title: 'Рабочий чат',
-      description: 'где можно задавать любые вопросы. Мы всегда открыты к диалогу и готовы рассмотреть ваши идеи'
-    },
-    {
-      icon: 'assets/icons/help.svg',
-      title: 'Помощь в поиске команды',
-      description: 'и обучение'
-    },
-    {
-      icon: 'assets/icons/base.svg',
-      title: 'База знаний',
-      description: 'где собраны все стандарты работы'
-    },
-    {
-      icon: 'assets/icons/opportunity.svg',
-      title: 'Возможность приобретения',
-      description: 'мастер-франшизы'
-    },
-    {
-      icon: 'assets/icons/marketing.svg',
-      title: 'Мощное маркетинговое продвижение',
-      description: 'в популярных социальных сетях'
-    }
-  ]);
+  // features = signal([
+  //   {
+  //     icon: 'assets/icons/support_agent_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg',
+  //     title: 'Что входит во франшизу',
+  //     description: 'IT настройка и поддержка всех ресурсов\n' +
+  //       'Менеджмент управляющей команды\n' +
+  //       'Обучение и найм персонала\n'
+  //   },
+  //   {
+  //     icon: 'assets/icons/chat_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg',
+  //     title: 'Бренд - менеджмент и маркетинг',
+  //     description: 'Сопровождение от дизайна проекта и поиска локаций, до начала продаж'
+  //   },
+  //   {
+  //     icon: 'assets/icons/help.svg',
+  //     title: 'Для кого подходит ?',
+  //     description: 'Предпринимателям, которые хотят быть в тренде и ' +
+  //       'получать активный доход, госслужащим, которые хотят открыть бизнес, ' +
+  //       'семейным парам и инвесторам которые хотят не тратить время ' +
+  //       'на работу, желая получать пассивный доход, а также владельцам помещений для сдачи в аренду'
+  //   },
+  //   {
+  //     icon: 'assets/icons/base.svg',
+  //     title: 'База знаний',
+  //     description: 'где собраны все стандарты работы'
+  //   },
+  //   {
+  //     icon: 'assets/icons/opportunity.svg',
+  //     title: 'Возможность приобретения',
+  //     description: 'мастер-франшизы'
+  //   },
+  //   {
+  //     icon: 'assets/icons/marketing.svg',
+  //     title: 'Мощное маркетинговое продвижение',
+  //     description: 'в популярных социальных сетях'
+  //   }
+  // ]);
 
   steps = signal([
     {
-      title: 'Оставьте заявку',
-      description: 'Заполните простую форму и расскажите о своём видении будущего партнерства с TEADAY. Мы свяжемся с вами в течение 24 часов.'
+      title: 'ПОДБЕРЁМ ФОРМАТ',
+      description: 'Сначала мы поможем вам подобрать формат кофейни и заключаем договор.'
     },
     {
-      title: 'Согласование деталей',
-      description: 'Обсудим все аспекты сотрудничества, условия партнерства и подготовим индивидуальное предложение для вашего бизнеса.'
+      title: 'НАЙДЁМ ПОМЕЩЕНИЕ',
+      description: 'Затем мы вместе с вами подберём оптимальное помещение для чайной, с наибольшей концентрацией потенциальных клиентов.'
     },
     {
-      title: 'Выбор локации',
-      description: 'Проведем анализ рынка и поможем выбрать оптимальное местоположение для вашей точки с учетом всех факторов успеха.'
+      title: 'НАЙМЁМ ЛЮДЕЙ',
+      description: 'После мы поможем подобрать вам персонал - грамотных и мотивированных сотрудников.'
     },
     {
-      title: 'Обучение и подготовка',
-      description: 'Проведем комплексное обучение по всем аспектам бизнеса: от приготовления напитков до управления финансами.'
+      title: 'ПОДГОТОВИМ ЧАЙНУЮ',
+      description: 'Параллельно мы поможем оснастить чайную и подготовить ее для начала работы.'
     },
     {
-      title: 'Формирование команды',
-      description: 'Поможем собрать профессиональную команду, проведем обучение персонала и настроим все рабочие процессы.'
+      title: 'ЗАПУСТИМ РЕКЛАМУ',
+      description: 'Когда вы будете готовы принимать гостей, мы вместе с вами запустим рекламную кампанию.'
     },
     {
-      title: 'Торжественное открытие',
-      description: 'Организуем яркое открытие вашей точки с привлечением местных СМИ и запуском маркетинговой кампании.'
+      title: 'ПЕРЕДАДИМ ВАМ ПРОЕКТ',
+      description: 'После того, как все будет готово, мы поможем провести торжественное открытие кофейни и передадим ее нашей команде сопровождения.'
     }
   ]);
 

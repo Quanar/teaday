@@ -29,11 +29,8 @@ import {EmailService} from "../../services/email.service";
           <!-- Заголовок -->
           <div class="text-center mb-12" appFade>
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
-              СТАНЬТЕ ПАРТНЕРОМ <span class="text-coral">TEADAY</span>
+              Оставьте заявку
             </h2>
-            <p class="text-gray-600">
-              Присоединяйтесь к успешной команде и начните свой прибыльный бизнес
-            </p>
           </div>
 
           <!-- Форма -->
@@ -129,16 +126,16 @@ import {EmailService} from "../../services/email.service";
             </div>
 
             <!-- Комментарий -->
-            <div class="form-group mt-6">
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                Комментарий
-              </label>
-              <textarea formControlName="comment"
-                        rows="4"
-                        class="form-input w-full px-4 py-2 rounded-lg border transition-colors
-                               focus:outline-none focus:ring-2 focus:ring-coral resize-none">
-              </textarea>
-            </div>
+<!--            <div class="form-group mt-6">-->
+<!--              <label class="block text-sm font-medium text-gray-700 mb-1">-->
+<!--                Комментарий-->
+<!--              </label>-->
+<!--              <textarea formControlName="comment"-->
+<!--                        rows="4"-->
+<!--                        class="form-input w-full px-4 py-2 rounded-lg border transition-colors-->
+<!--                               focus:outline-none focus:ring-2 focus:ring-coral resize-none">-->
+<!--              </textarea>-->
+<!--            </div>-->
             <!-- Согласие -->
             <div class="mt-6">
               <label class="flex items-start cursor-pointer group">
@@ -326,7 +323,7 @@ export class ContactComponent {
   }
   sendToTelegram(formData: any) {
     const botToken = environment.telegramBotToken;
-    const chatId = '1136289645';
+    const chatId = '-4778585134';
 
     const text = `
     Новая заявка:
