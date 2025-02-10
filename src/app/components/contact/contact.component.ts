@@ -323,7 +323,7 @@ export class ContactComponent {
   }
   sendToTelegram(formData: any) {
     const botToken = environment.telegramBotToken;
-    const chatId = '-4778585134';
+    const chatId = '-1002320585322';
 
     const text = `
     Новая заявка:
