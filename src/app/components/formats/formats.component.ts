@@ -91,7 +91,7 @@ export class FormatsComponent {
         { label: 'Паушальный взнос', value: '3 500 000 тг.' }
 
       ],
-      image: 'assets/images/format-cafe.svg'
+      image: 'assets/images/about_our_company.jpg'
     },
     {
       id: 'island',
@@ -105,7 +105,7 @@ export class FormatsComponent {
         { label: 'Роялти', value: '3 от оборота.' },
         { label: 'Паушальный взнос', value: '3 000 000 тг.' }
       ],
-      image: 'assets/images/format-island.svg'
+      image: 'assets/images/korner.png'
     }
   ]);
 

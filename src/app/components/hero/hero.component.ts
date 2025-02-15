@@ -157,7 +157,7 @@ interface TeaCup {
                   <img
                     [src]="cup.image"
                     [alt]="cup.name"
-                    class="w-[200px] h-[200px] xs:w-[250px] xs:h-[250px] sm:w-full sm:h-full object-contain transform transition-transform
+                    class="w-[200px] h-[200px] xs:w-[250px] xs:h-[250px] sm:w-[500px] sm:h-[500px] object-contain transform transition-transform
                            group-hover:scale-105 drop-shadow-2xl mx-auto"
                     loading="lazy"
                     (error)="handleImageError($event)">

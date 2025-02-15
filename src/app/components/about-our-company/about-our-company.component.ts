@@ -24,7 +24,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
               <div class="transform hover:scale-105 transition-transform duration-300 mx-auto md:mx-0">
                 <img
-                  ngSrc="assets/images/teaday_cups.jpg"
+                  ngSrc="assets/images/oneto2.jpeg"
                   alt="О нашей компании"
                   width="450"
                   height="200"
