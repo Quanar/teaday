@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
@@ -13,6 +13,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {SocialIconsComponent} from "./components/social-icons/social-icons.component";
 import {BrandIdentityComponent} from "./components/brand-identity/brand-identity.component";
 import {BrandValuesComponent} from "./components/brand-values/brand-values.component";
+import {trigger, transition, style, animate, state} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,9 @@ import {BrandValuesComponent} from "./components/brand-values/brand-values.compo
     BrandValuesComponent
   ],
   template: `
+    <div class="curtain" [@curtainAnimation]="curtainState">
+      <img src="assets/images/teaday.png" alt="TeaDay Logo" class="curtain-image">
+    </div>
     <app-header/>
     <main>
       <app-hero/>
@@ -48,7 +52,42 @@ import {BrandValuesComponent} from "./components/brand-values/brand-values.compo
     </main>
     <app-social-icons />
     <app-footer/>
-  `
+  `,
+  styles: [`
+    .curtain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: top;
+    }
+    .curtain-image {
+      width: 300px;
+      height: auto;
+    }
+  `],
+  animations: [
+    trigger('curtainAnimation', [
+      state('visible', style({ transform: 'scaleY(1)' })),
+      state('hidden', style({ transform: 'scaleY(0)' })),
+      transition('visible => hidden', [
+        animate('1s ease-in-out')
+      ])
+    ])
+  ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  curtainState = 'visible';
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.curtainState = 'hidden';
+    }, 500);
+  }
 }
