@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
   template: `
     <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
-        <!-- Кнопка закрытия -->
         <button
           (click)="close.emit()"
           class="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -35,16 +34,7 @@ import { FormsModule } from '@angular/forms';
             />
           </div>
 
-          <div>
-            <input
-              type="email"
-              [(ngModel)]="formData.email"
-              name="email"
-              placeholder="Email"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
-          </div>
+         
 
           <div class="flex gap-2">
             <select
@@ -77,26 +67,6 @@ import { FormsModule } from '@angular/forms';
             />
           </div>
 
-          <div class="flex flex-col space-y-2">
-            <label class="text-sm text-gray-600">Удобная дата для связи:</label>
-            <div class="flex gap-4">
-              <input
-                type="date"
-                [(ngModel)]="formData.date"
-                name="date"
-                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                required
-              />
-              <input
-                type="time"
-                [(ngModel)]="formData.time"
-                name="time"
-                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                required
-              />
-            </div>
-          </div>
-
           <button
             type="submit"
             class="w-full px-6 py-4 bg-[#0066FF] text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">
@@ -112,11 +82,8 @@ export class ModalComponent {
 
   formData = {
     name: '',
-    email: '',
     phone: '',
     city: '',
-    date: '',
-    time: ''
   };
 
   // По умолчанию выбран Казахстан
@@ -133,11 +100,9 @@ export class ModalComponent {
     { code: '+91', flag: '🇮🇳', prefix: '+91' }, // Индия
     { code: '+61', flag: '🇦🇺', prefix: '+61' }, // Австралия
     { code: '+55', flag: '🇧🇷', prefix: '+55' }, // Бразилия
-    // Добавьте другие страны по необходимости
   ];
 
   ngOnInit() {
-    // Устанавливаем префикс телефона по умолчанию для Казахстана
     this.updatePhonePrefix();
   }
 
@@ -149,8 +114,6 @@ export class ModalComponent {
   }
 
   onSubmit() {
-    console.log('Form submitted:', this.formData);
-    //TODO Здесь будет логика отправки формы
     this.close.emit();
   }
 }

@@ -12,7 +12,6 @@ import {
   stagger,
   group
 } from '@angular/animations';
-import {RouterLink} from "@angular/router";
 
 interface TeaCup {
   image: string;
@@ -26,7 +25,7 @@ interface TeaCup {
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, ModalComponent, RouterLink],
+  imports: [CommonModule, ModalComponent],
   animations: [
     trigger('slideAnimation', [
       state('void', style({
@@ -158,8 +157,8 @@ interface TeaCup {
                   <img
                     [src]="cup.image"
                     [alt]="cup.name"
-                    class="w-full h-full object-contain transform transition-transform
-                           group-hover:scale-105 drop-shadow-2xl"
+                    class="w-[200px] h-[200px] xs:w-[250px] xs:h-[250px] sm:w-full sm:h-full object-contain transform transition-transform
+                           group-hover:scale-105 drop-shadow-2xl mx-auto"
                     loading="lazy"
                     (error)="handleImageError($event)">
 
@@ -297,29 +296,13 @@ export class HeroComponent implements OnInit, OnDestroy {
   // Данные о чае
   teaCups = signal<TeaCup[]>([
     {
-      id: 'classic',
-      image: 'assets/images/classic-tea.svg',
-      name: 'Классический чай',
-      color: '#FFD700',
-      description: 'Изысканный купаж черного чая с богатым ароматом и насыщенным вкусом',
-      price: ''
-    },
-    {
       id: 'bubble',
-      image: 'assets/images/bubble-tea.svg',
+      image: 'assets/images/cold_drinks_1.png',
       name: 'Bubble Tea',
       color: '#FF69B4',
       description: 'Популярный молочный чай с жемчужинами тапиоки и фруктовыми добавками',
       price: ''
     },
-    {
-      id: 'fruit',
-      image: 'assets/images/fruit-tea.svg',
-      name: 'Фруктовый чай',
-      color: '#FF6B6B',
-      description: 'Освежающий микс из натуральных фруктов и ягод с нежным цветочным ароматом',
-      price: ''
-    }
   ]);
 
   // Вычисляемые значения
