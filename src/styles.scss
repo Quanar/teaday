@@ -6,48 +6,45 @@
 /* Custom properties */
 :root {
   --color-primary: #0066FF;
-  --color-coral:  #0066FF;
-  --color-coral-dark:  #0066FF;
+  --color-coral: #0066FF;
+  --color-coral-dark: #0066FF;
   --color-coral-light: #FFF0ED;
 }
 
-/* Подключаем League Spartan */
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
-/* Fonts */
+/* Font declarations */
 @font-face {
-  font-family: 'Cocogoose Pro';
-  src: url('/assets/fonts/Cocogoose-Pro-Regular-trial.ttf') format('truetype');
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat/MONTSERRAT-REGULAR.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0020-002F, U+003A-007E, U+00A0-00FF, U+0400-045F;
 }
 
 @font-face {
-  font-family: 'Cocogoose Pro';
-  src: url('/assets/fonts/Cocogoose-Pro-Bold-trial.ttf') format('truetype');
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat/MONTSERRAT-BOLD.TTF') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0020-002F, U+003A-007E, U+00A0-00FF, U+0400-045F;
-}
-
-/* Правила для цифр используя League Spartan */
-@font-face {
-  font-family: 'Cocogoose Pro';
-  src: local('League Spartan Bold');
-  unicode-range: U+0030-0039; /* Только цифры */
-  font-weight: bold;
-  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Cocogoose Pro';
-  src: local('League Spartan Bold'), local('League Spartan');
-  unicode-range: U+0030-0039; /* Только цифры */
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat/MONTSERRAT-ITALIC.TTF') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat/MONTSERRAT-BOLDITALIC.TTF') format('truetype');
   font-weight: bold;
-  font-style: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* Global styles */
@@ -56,7 +53,7 @@ html {
 }
 
 body {
-  font-family: 'Cocogoose Pro', 'League Spartan', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333333;
