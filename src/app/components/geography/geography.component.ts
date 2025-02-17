@@ -11,7 +11,7 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
-import { Style, Circle, Fill, Stroke } from 'ol/style';
+import { Style, Icon } from 'ol/style';
 import { Geometry } from 'ol/geom';
 
 @Component({
@@ -101,24 +101,18 @@ export class GeographyMapComponent implements AfterViewInit {
 
   private initMap() {
     this.defaultStyle = new Style({
-      image: new Circle({
-        radius: 6,
-        fill: new Fill({ color: '#0066FF' }),
-        stroke: new Stroke({
-          color: '#ffffff',
-          width: 2
-        })
+      image: new Icon({
+        src: 'assets/images/teaday-logo.png',
+        scale: 0.01,
+        anchor: [0.5, 1]
       })
     });
 
     this.highlightStyle = new Style({
-      image: new Circle({
-        radius: 8,
-        fill: new Fill({ color: '#FF3333' }),
-        stroke: new Stroke({
-          color: '#ffffff',
-          width: 2
-        })
+      image: new Icon({
+        src: 'assets/images/teaday-logo.png',
+        scale: 0.015,
+        anchor: [0.5, 1]
       })
     });
 
