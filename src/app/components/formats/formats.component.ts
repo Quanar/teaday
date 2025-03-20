@@ -91,7 +91,7 @@ export class FormatsComponent {
         { label: 'Паушальный взнос', value: '3 500 000 тг.' }
 
       ],
-      image: 'assets/images/about_our_company.jpg'
+      image: 'assets/images/pomeshenie.jpg'
     },
     {
       id: 'island',
